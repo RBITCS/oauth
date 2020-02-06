@@ -1,0 +1,34 @@
+package com.example.demo;
+
+
+import javax.validation.constraints.Min;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+	@GetMapping("/greet")
+	public String index() {
+		return "Greetings !!";
+	}
+	
+	@GetMapping("/books/{id}")
+    String findOne(@PathVariable @Min(1) Long id) {
+        return "I was found";
+    }
+	
+	@GetMapping(value = "/student/param", params = "version=1")
+	  public String paramV1() {
+	    return "I am from version 1";
+	  }
+
+	@GetMapping(value = "/student/param", params = "version=2")
+	  public String paramV2() {
+	    return "I am from version 2";
+	  }
+
+}
